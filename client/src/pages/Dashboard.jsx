@@ -24,7 +24,7 @@ function Dashboard() {
   const [error, setError] = useState("");
 
   const api = axios.create({
-    baseURL: "http://localhost:5000/api",
+    baseURL: "https://stackcraft-api-mahesh.onrender.com/api",
     headers: {
       Authorization: `Bearer ${token}`
     }

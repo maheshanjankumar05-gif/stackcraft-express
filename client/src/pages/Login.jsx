@@ -19,7 +19,7 @@ function Login() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://stackcraft-api-mahesh.onrender.com/api/auth/login",
         {
           email,
           password
@@ -27,6 +27,7 @@ function Login() {
       );
 
       localStorage.setItem("token", response.data.token);
+
       localStorage.setItem(
         "user",
         JSON.stringify(response.data.user)
