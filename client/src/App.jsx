@@ -18,25 +18,21 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        {/* Home */}
         <Route
           path="/"
           element={<Navigate to="/login" replace />}
         />
 
-        {/* Login */}
         <Route
           path="/login"
           element={<Login />}
         />
 
-        {/* Register */}
         <Route
           path="/register"
           element={<Register />}
         />
 
-        {/* Protected Dashboard */}
         <Route
           path="/dashboard"
           element={
