@@ -6,11 +6,7 @@ import Dashboard from "./pages/Dashboard";
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("token");
 
-  if (!token) {
-    return <Navigate to="/login" replace />;
-  }
-
-  return children;
+  return token ? children : <Navigate to="/login" replace />;
 }
 
 function App() {
@@ -18,21 +14,31 @@ function App() {
     <BrowserRouter>
       <Routes>
 
+        {/* Home */}
         <Route
           path="/"
-          element={<Navigate to="/login" replace />}
+          element={
+            localStorage.getItem("token") ? (
+              <Navigate to="/dashboard" replace />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
         />
 
+        {/* Login */}
         <Route
           path="/login"
           element={<Login />}
         />
 
+        {/* Register */}
         <Route
           path="/register"
           element={<Register />}
         />
 
+        {/* Protected Dashboard */}
         <Route
           path="/dashboard"
           element={
