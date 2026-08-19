@@ -21,26 +21,29 @@ function Register() {
     setLoading(true);
 
     try {
-      await axios.post(
+      const response = await axios.post(
         "https://stackcraft-api-mahesh.onrender.com/api/auth/register",
         {
-          name,
-          email,
+          name: name.trim(),
+          email: email.trim(),
           password
         }
       );
 
-      setSuccess(
-        "Registration successful! Redirecting to login..."
-      );
+      console.log("Register response:", response.data);
+
+      setSuccess("Registration successful! Redirecting to login...");
 
       setTimeout(() => {
         navigate("/login");
       }, 1500);
+
     } catch (error) {
+      console.error("Register error:", error.response?.data);
+
       setError(
         error.response?.data?.message ||
-          "Registration failed. Please try again."
+        "Registration failed. Please try again."
       );
     } finally {
       setLoading(false);
@@ -50,6 +53,7 @@ function Register() {
   return (
     <div className="auth-container">
       <div className="auth-card">
+
         <h1>StackCraft</h1>
 
         <p className="subtitle">
@@ -69,6 +73,7 @@ function Register() {
         )}
 
         <form onSubmit={handleRegister}>
+
           <label>Name</label>
 
           <input
@@ -96,20 +101,29 @@ function Register() {
             placeholder="Create a password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            minLength={6}
             required
           />
 
-          <button type="submit" disabled={loading}>
-            {loading ? "Creating Account..." : "Register"}
+          <button
+            type="submit"
+            disabled={loading}
+          >
+            {loading
+              ? "Creating Account..."
+              : "Register"}
           </button>
+
         </form>
 
         <p className="switch-text">
           Already have an account?{" "}
+
           <Link to="/login">
             Login
           </Link>
         </p>
+
       </div>
     </div>
   );
