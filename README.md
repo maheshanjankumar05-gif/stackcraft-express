@@ -1,23 +1,21 @@
-# 🚀 StackCraft Express
+# 🚀 StackCraft – Full-Stack Item Management Application
 
-A full-stack MERN application for secure user authentication and item management with complete CRUD operations.
+StackCraft is a full-stack web application built using the **MERN stack**. It provides secure user authentication and a protected dashboard where users can create, view, update, and delete items.
 
-## 📌 Project Overview
+The application is deployed online with a **React frontend**, **Node.js/Express backend**, and **MongoDB database**.
 
-**StackCraft Express** is a full-stack web application developed using the MERN stack.
+## 🌐 Live Demo
 
-The application allows users to:
+**Frontend:**
+https://stackcraft-frontend-mahesh.onrender.com
 
-- Create an account
-- Login securely
-- Authenticate using JWT
-- Add items
-- View their items
-- Edit items
-- Delete items
-- Manage all items through a responsive dashboard
+**Backend API:**
+https://stackcraft-api-mahesh.onrender.com
 
-The backend uses **Node.js and Express.js**, while **MongoDB Atlas** is used for database management. The frontend is built using **React and Vite**.
+**GitHub Repository:**
+https://github.com/maheshanjankumar05-gif/stackcraft-express
+
+> Replace the frontend URL above with your exact Render URL if your Render-generated URL is different.
 
 ---
 
@@ -25,102 +23,290 @@ The backend uses **Node.js and Express.js**, while **MongoDB Atlas** is used for
 
 ### 🔐 Authentication
 
-- User registration
-- User login
-- Password encryption using bcrypt
-- JWT-based authentication
-- Protected API routes
-- Logout functionality
+* User registration
+* User login
+* Password authentication
+* JWT-based authentication
+* Protected dashboard
+* Logout functionality
+* Duplicate email validation
 
 ### 📦 Item Management
 
-- Create new items
-- View existing items
-- Update item details
-- Delete items
-- User-specific item management
+* Create new items
+* View user's items
+* Edit existing items
+* Delete items
+* Item categories
+* Item descriptions
+* Item pricing
+* Confirmation before deletion
+
+### 🛡️ Security
+
+* JWT authentication
+* Protected API routes
+* Password hashing
+* Environment variables for sensitive configuration
+* `.env` excluded from GitHub
+* `node_modules` excluded from GitHub
 
 ### 🎨 Frontend
 
-- React-based user interface
-- Responsive design
-- Login and registration pages
-- Dashboard
-- Navigation bar
-- Item cards
-- Add/Edit forms
-- Error and success messages
-
-### 🗄️ Database
-
-- MongoDB Atlas
-- Mongoose ODM
-- User model
-- Item model
+* Responsive React interface
+* Login page
+* Registration page
+* Dashboard
+* Add/Edit item form
+* Item cards
+* Success and error messages
+* Responsive layout for desktop and mobile
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Tech Stack
 
 ### Frontend
 
-- React
-- Vite
-- JavaScript
-- HTML5
-- CSS3
-- Axios
+* React
+* React Router
+* Axios
+* HTML
+* CSS
+* JavaScript
 
 ### Backend
 
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- JWT
-- bcryptjs
-- CORS
-- dotenv
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT
+* bcryptjs
+* CORS
+* dotenv
 
-### Development Tools
+### Deployment & Tools
 
-- Visual Studio Code
-- Git
-- GitHub
-- Postman
-- MongoDB Atlas
+* Git
+* GitHub
+* Render
+* MongoDB Atlas
+* Postman
+* Visual Studio Code
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-STACKCRAFT-EXPRESS/
+stackcraft-express/
 │
 ├── client/
 │   ├── public/
 │   ├── src/
-│   │   ├── assets/
-│   │   ├── components/
 │   │   ├── pages/
-│   │   ├── App.css
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Login.jsx
+│   │   │   └── Register.jsx
 │   │   ├── App.jsx
-│   │   ├── index.css
+│   │   ├── App.css
 │   │   └── main.jsx
 │   ├── package.json
-│   └── vite.config.js
+│   └── ...
 │
 ├── server/
-│   ├── controllers/
-│   ├── middleware/
-│   │   └── authMiddleware.js
 │   ├── models/
 │   ├── routes/
-│   │   ├── authRoutes.js
-│   │   └── itemRoutes.js
+│   ├── middleware/
 │   ├── server.js
 │   ├── package.json
 │   └── .env
 │
 ├── .gitignore
 └── README.md
+```
+
+---
+
+## 🔑 API Endpoints
+
+### Authentication
+
+| Method | Endpoint             | Description         |
+| ------ | -------------------- | ------------------- |
+| POST   | `/api/auth/register` | Register a new user |
+| POST   | `/api/auth/login`    | Login user          |
+
+### Items
+
+| Method | Endpoint         | Description                    |
+| ------ | ---------------- | ------------------------------ |
+| GET    | `/api/items`     | Get authenticated user's items |
+| POST   | `/api/items`     | Create an item                 |
+| PUT    | `/api/items/:id` | Update an item                 |
+| DELETE | `/api/items/:id` | Delete an item                 |
+
+Protected item endpoints require:
+
+```text
+Authorization: Bearer <JWT_TOKEN>
+```
+
+---
+
+## 🔄 Application Flow
+
+```text
+User
+ │
+ ▼
+Register
+ │
+ ▼
+Login
+ │
+ ▼
+JWT Token
+ │
+ ▼
+Protected Dashboard
+ │
+ ├── Add Item
+ │
+ ├── View Items
+ │
+ ├── Edit Item
+ │
+ └── Delete Item
+ │
+ ▼
+Logout
+```
+
+---
+
+## 🧪 Testing
+
+The backend APIs were tested using **Postman**.
+
+Verified operations:
+
+* Register → `201 Created`
+* Login → `200 OK`
+* Get Items → successful
+* Create Item → successful
+* Update Item → successful
+* Delete Item → successful
+
+The live React frontend was also connected to the deployed backend API and tested with JWT authentication.
+
+---
+
+## 🚀 Running Locally
+
+### Clone the repository
+
+```bash
+git clone https://github.com/maheshanjankumar05-gif/stackcraft-express.git
+cd stackcraft-express
+```
+
+### Backend
+
+```bash
+cd server
+npm install
+npm run dev
+```
+
+The backend runs locally on:
+
+```text
+http://localhost:5000
+```
+
+### Frontend
+
+Open another terminal:
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
+The React development server will provide the local frontend URL.
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file inside the `server` directory.
+
+Example:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+PORT=5000
+```
+
+**Never upload `.env` to GitHub.**
+
+The project `.gitignore` includes:
+
+```text
+node_modules/
+.env
+.env.*
+dist/
+build/
+*.log
+```
+
+---
+
+## 📌 Project Highlights
+
+* Full-stack MERN application
+* JWT authentication
+* Protected routes
+* RESTful API
+* MongoDB database integration
+* Complete CRUD functionality
+* Responsive UI
+* GitHub version control
+* Postman API testing
+* Production deployment using Render
+
+---
+
+## 👨‍💻 Author
+
+**Mahesh Anjan Kumar Parvathareddy**
+
+B.Tech – Computer Science Engineering
+
+GitHub:
+https://github.com/maheshanjankumar05-gif
+
+---
+
+## ⭐ Future Improvements
+
+* Search and filter items
+* Pagination
+* User profile management
+* Forgot/reset password
+* Image upload
+* Admin dashboard
+* Improved form validation
+* Dark mode
+* Analytics and statistics
+
+---
+
+## 📄 License
+
+This project is created for educational and portfolio purposes.
